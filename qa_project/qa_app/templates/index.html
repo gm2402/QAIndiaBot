@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Application</title>
+    <link rel="stylesheet" href="{% static 'qa_app/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Q&A Application of India</h1>
+
+        <form action="{% url 'ask_question' %}" method="post">
+            {% csrf_token %}
+            <label for="question">Ask a question:</label>
+            <input type="text" id="question" name="question" required>
+            <button type="submit">Get Answer</button>
+        </form>
+
+        <div class="answer-container">
+            <p><strong>Default Question:</strong> {{ question }}</p>
+            <p><strong>Default Answer:</strong> {{ answer }}</p>
+        </div>
+
+        <div class="answer-container">
+            <p><strong>User's Question:</strong> {{ question }}</p>
+            <p><strong>Answer:</strong> {{ answer }}</p>
+        </div>
+    </div>
+</body>
+</html>
